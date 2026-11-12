@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07080B">
+<title>Combo Black Friday | Bar Completo</title>
+<style>
+/* =========================================================
+   PALETA "NÉON DE BALCÃO" — criada do zero para o combo.
+   Não repete nenhuma paleta dos produtos nem a da referência.
+   Cores de acento ficam em trio RGB para usar com opacidade:
+   rgb(var(--cor) / .12), como na página de referência.
+   ========================================================= */
+:root{
+  --tinta:#07080B;        /* fundo */
+  --balcao:#0F1116;       /* faixas */
+  --vidro:#171A21;        /* cartões */
+  --linha:255 255 255;    /* bordas: rgb(var(--linha)/.1) */
+  --gelo:#F2F4F7;         /* texto */
+  --nevoa:#9AA1AE;        /* texto secundário */
+
+  --limao:198 255 61;     /* #C6FF3D néon principal + botão */
+  --cereja:232 37 75;     /* #E8254B urgência */
+  --ambar:255 181 71;     /* #FFB547 bônus */
+  --violeta:139 108 255;  /* #8B6CFF Bar Plan Pro */
+  --coral:255 107 74;     /* #FF6B4A Drinks que Dão Lucro */
+  --azul:92 200 255;      /* #5CC8FF DRINKAI */
+
+  --cor:var(--limao);     /* acento da seção atual */
+  --r-card:1.5rem; --r-item:1rem;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--tinta);color:var(--gelo);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;max-width:30rem;margin:0 auto;overflow-x:clip;padding-bottom:6rem}
+a{color:inherit;text-decoration:none}
+.wrap{padding-inline:1rem}
+.c{text-align:center}
+
+/* ---------- tipografia (escala da referência) ---------- */
+.eyebrow{font-size:.6875rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgb(var(--cor))}
+h1{font-size:2.5rem;line-height:1;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
+h2{font-size:2rem;line-height:1.1;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.5rem;line-height:1.15;font-weight:800}
+p.t{font-size:1.0625rem;line-height:1.75rem;color:#D5D9E2}
+.muted{color:var(--nevoa)}
+
+/* título néon */
+.neon{position:relative;display:inline-block;color:rgb(var(--limao));text-shadow:0 0 .14em rgb(var(--limao)/.45)}
+.neon::after{content:attr(data-text);position:absolute;inset:0;color:transparent;text-shadow:0 0 .1em rgb(var(--limao)/.9),0 0 .35em rgb(var(--limao)/.6),0 0 .8em rgb(var(--limao)/.4);pointer-events:none;animation:neon 2.8s ease-in-out infinite}
+@keyframes neon{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* ---------- faixa de urgência ---------- */
+.faixa{background:rgb(var(--cereja));padding:.625rem 1rem .75rem;text-align:center;position:sticky;top:0;z-index:30}
+.faixa p{font-size:.8125rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.relogio{display:flex;justify-content:center;align-items:center;gap:.375rem;margin-top:.5rem}
+.relogio div{background:rgba(0,0,0,.32);border-radius:.5rem;min-width:3.5rem;padding:.3rem 0}
+.relogio b{display:block;font-size:1.375rem;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.1}
+.relogio small{font-size:.5625rem;font-weight:700;letter-spacing:.1em}
+.relogio i{font-style:normal;font-weight:900;opacity:.7}
+
+/* ---------- topo ---------- */
+.topo{padding:2rem 1rem 0;text-align:center;background:radial-gradient(ellipse 90% 60% at 50% 0,rgb(var(--limao)/.13),transparent 70%)}
+.topo p.t{margin-top:1rem}
+.topo .nota{margin-top:.75rem;font-size:.8125rem;font-weight:600;color:rgb(var(--limao))}
+.video{margin:1.5rem 0 1.25rem;aspect-ratio:9/16;max-height:32rem;width:100%;border-radius:var(--r-card);border:1px solid rgb(var(--linha)/.12);background:linear-gradient(160deg,#1B1F29,#0B0C10);display:grid;place-items:center;position:relative;overflow:hidden}
+.video span{font-size:.8125rem;color:var(--nevoa);padding:0 2rem}
+.video::before{content:"▶";position:absolute;width:4rem;height:4rem;border-radius:50%;display:grid;place-items:center;background:rgb(var(--limao));color:#0A1200;font-size:1.25rem;padding-left:.2rem;box-shadow:0 0 30px rgb(var(--limao)/.5);top:38%}
+
+/* ---------- botão com filete girando ---------- */
+.cta{position:relative;isolation:isolate;overflow:hidden;display:block;padding:2px;border-radius:calc(.875rem + 2px);background:rgb(var(--limao)/.3);box-shadow:0 0 24px rgb(var(--limao)/.3)}
+.cta::before{content:"";position:absolute;top:50%;left:50%;width:104%;aspect-ratio:1;z-index:-1;background:conic-gradient(from 0deg,transparent 0 200deg,rgb(var(--limao)/.6) 290deg,#fff 345deg,transparent 1turn);transform:translate(-50%,-50%) rotate(0);animation:gira 3.2s linear infinite}
+@keyframes gira{to{transform:translate(-50%,-50%) rotate(1turn)}}
+.cta span{display:flex;align-items:center;justify-content:center;gap:.625rem;min-height:3.75rem;padding:0 1rem;border-radius:.875rem;background:linear-gradient(135deg,#D6FF6B,#A8E61A);color:#0A1200;font-size:1.0625rem;font-weight:900;letter-spacing:.02em;text-transform:uppercase}
+.cta:active span{filter:brightness(.94)}
+.selos{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:1rem;font-size:.8125rem;color:#D5D9E2;text-align:left}
+.selos li{list-style:none;display:flex;gap:.4rem;align-items:center}
+.selos li::before{content:"✓";font-weight:900;color:rgb(var(--limao))}
+
+/* ---------- comparativo ---------- */
+section{padding-top:3.5rem;scroll-margin-top:4.5rem}
+.plano{margin-top:1rem;border-radius:var(--r-card);background:var(--vidro);border:1px solid rgb(var(--linha)/.1);padding:1.25rem}
+.plano h3{font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;color:var(--nevoa)}
+.plano .sub{font-size:.8125rem;color:var(--nevoa);margin-top:.25rem}
+.plano dl{margin-top:1rem;display:grid;gap:.625rem}
+.plano dl div{display:flex;justify-content:space-between;gap:.75rem;font-size:.9375rem;align-items:baseline}
+.plano dt{font-weight:700;min-width:0}
+.plano dl div.master-linha dt,.plano dl div.master-linha dd{color:rgb(var(--violeta));font-weight:900}
+.plano dd{white-space:nowrap;color:var(--nevoa)}
+.plano dd.nao{opacity:.55}
+.plano dd.bonus{font-size:.6875rem;font-weight:900;letter-spacing:.08em;color:#1A0F00;background:rgb(var(--ambar));border-radius:999px;padding:.15rem .6rem}
+.plano .total{margin-top:1rem;padding-top:1rem;border-top:1px solid rgb(var(--linha)/.1);display:flex;justify-content:space-between;align-items:baseline;font-size:.8125rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.plano .total b{font-size:1.5rem;letter-spacing:0}
+.plano.melhor{background:linear-gradient(180deg,rgb(var(--limao)/.1),var(--vidro) 45%);border-color:rgb(var(--limao)/.55);box-shadow:0 0 34px rgb(var(--limao)/.12)}
+.plano.melhor h3{color:rgb(var(--limao))}
+.plano.melhor .total b{color:rgb(var(--limao))}
+
+/* ---------- preço ---------- */
+.preco{margin-top:1rem;border-radius:var(--r-card);border:1px solid rgb(var(--limao)/.4);background:var(--balcao);padding:1.5rem 1.25rem;text-align:center}
+.preco .de{font-size:.9375rem;color:var(--nevoa)}
+.preco .off{display:inline-block;margin:.5rem 0;font-size:.6875rem;font-weight:900;letter-spacing:.1em;background:rgb(var(--cereja));border-radius:999px;padding:.3rem .8rem}
+.preco .por{font-size:2.75rem;font-weight:900;line-height:1}
+.preco .por small{display:block;font-size:.8125rem;font-weight:700;letter-spacing:.08em;color:var(--nevoa);margin-bottom:.35rem;text-transform:uppercase}
+.preco .vista{margin:.5rem 0 1.25rem;font-size:.9375rem;color:#D5D9E2}
+
+/* ---------- produto (cada um com sua cor) ---------- */
+.produto{margin-top:4.5rem;position:relative;padding:3rem 1rem 2.5rem;background:linear-gradient(180deg,rgb(var(--cor)/0),rgb(var(--cor)/.12) 18%,rgb(var(--cor)/.06) 78%,rgb(var(--cor)/0))}
+.produto::before{content:"";position:absolute;top:0;left:1rem;right:1rem;height:2px;background:linear-gradient(90deg,rgb(var(--cor)/0),rgb(var(--cor)/.6) calc(50% - 2.25rem),transparent calc(50% - 2.25rem),transparent calc(50% + 2.25rem),rgb(var(--cor)/.6) calc(50% + 2.25rem),rgb(var(--cor)/0))}
+.produto .num{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);font-size:2.5rem;font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgb(var(--cor)/.7)}
+.capa{aspect-ratio:4/3;border-radius:var(--r-card);border:1px solid rgb(var(--cor)/.55);background:radial-gradient(circle at 30% 20%,rgb(var(--cor)/.35),transparent 60%),#0D0F14;display:grid;place-items:center;box-shadow:0 0 60px rgb(var(--cor)/.22)}
+.capa b{font-size:1.75rem;font-weight:900;letter-spacing:-.02em;text-align:center;padding:0 1rem}
+.capa small{display:block;font-size:.6875rem;font-weight:600;color:var(--nevoa);letter-spacing:.08em;margin-top:.4rem}
+.selo{display:inline-block;margin:1.25rem 0 .625rem;font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgb(var(--cor)/.75);background:rgb(var(--cor)/.2);border-radius:999px;padding:.3rem .8rem}
+.produto p.t{margin-top:.75rem}
+.lista{margin-top:1rem;display:grid;gap:.5rem}
+.lista li{list-style:none;display:flex;gap:.625rem;align-items:flex-start;font-size:.9375rem;line-height:1.4;background:rgb(var(--linha)/.04);border:1px solid rgb(var(--linha)/.08);border-radius:var(--r-item);padding:.75rem .875rem}
+.lista li::before{content:"";flex:0 0 .5rem;height:.5rem;border-radius:50%;background:rgb(var(--cor));margin-top:.4rem;box-shadow:0 0 10px rgb(var(--cor)/.9)}
+
+/* capa real */
+.capa.img{display:block;overflow:hidden;aspect-ratio:1/1;background:#0D0F14}
+.capa.img.larga{aspect-ratio:3/2}
+.capa.img img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ---------- master: Bar Plan Pro ---------- */
+.master{--cor:var(--violeta);margin-top:3rem;padding:2.25rem 1rem 2.5rem;background:linear-gradient(180deg,rgb(var(--violeta)/.04),rgb(var(--violeta)/.16) 20%,rgb(var(--violeta)/.07) 85%,rgb(var(--violeta)/0));border-top:1px solid rgb(var(--violeta)/.5);border-bottom:1px solid rgb(var(--violeta)/.25)}
+.coroa{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:900;letter-spacing:.14em;background:rgb(var(--violeta));color:#fff;border-radius:999px;padding:.4rem .9rem;box-shadow:0 0 22px rgb(var(--violeta)/.6)}
+.master h3{font-size:2rem;margin-top:.875rem}
+.master .capa{margin-top:1.25rem}
+.master p.t{margin-top:.75rem}
+.quatro{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.25rem}
+.quatro div{background:rgb(var(--violeta)/.12);border:1px solid rgb(var(--violeta)/.35);border-radius:var(--r-item);padding:.75rem;text-align:center}
+.quatro b{display:block;font-size:1.5rem;font-weight:900;color:rgb(var(--violeta))}
+.quatro small{font-size:.75rem;color:#D5D9E2}
+.abas{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;margin-top:1.5rem}
+.abas::-webkit-scrollbar{display:none}
+.abas button{flex:0 0 auto;font:inherit;font-size:.8125rem;font-weight:800;color:var(--nevoa);background:rgb(var(--linha)/.05);border:1px solid rgb(var(--linha)/.12);border-radius:999px;padding:.55rem .2rem;cursor:pointer;white-space:nowrap;font-size:.75rem}
+.abas button[aria-selected="true"]{color:#fff;background:rgb(var(--violeta));border-color:rgb(var(--violeta));box-shadow:0 0 16px rgb(var(--violeta)/.5)}
+.painel{margin-top:.75rem}
+.painel[hidden]{display:none}
+.painel > p{font-size:.9375rem;line-height:1.5;color:#D5D9E2}
+
+/* ---------- grade de cursos ---------- */
+.mais{margin-top:4.5rem;padding-top:3rem;--cor:var(--limao)}
+.grade{margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.curso{border-radius:var(--r-item);background:var(--vidro);border:1px solid rgb(var(--linha)/.1);overflow:hidden}
+.curso img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:#000}
+.curso div{padding:.625rem .75rem .75rem}
+.curso b{display:block;font-size:.875rem;line-height:1.25}
+.grade .curso:last-child:nth-child(odd){grid-column:1/-1;display:flex;align-items:center}
+.grade .curso:last-child:nth-child(odd) img{flex:0 0 42%;width:42%}
+.grade .curso:last-child:nth-child(odd) div{text-align:left}
+.curso p{margin-top:.375rem;font-size:.8125rem;line-height:1.4;color:#C9CED8;text-align:left}
+.curso small{display:block;margin-top:.25rem;font-size:.6875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgb(var(--limao))}
+
+/* ---------- certificado ---------- */
+.cert-sec{margin-top:4.5rem;--cor:var(--ambar)}
+.provas{margin-top:4.5rem}
+.sub-provas{color:var(--nevoa);font-size:.875rem;margin-top:.5rem}
+.carrossel{display:flex;gap:.875rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:1.5rem -1rem 0;padding:0 7%;align-items:flex-start;-webkit-overflow-scrolling:touch}
+.carrossel::-webkit-scrollbar{display:none}
+.slide{flex:0 0 86%;scroll-snap-align:center;margin:0;text-align:left;border-radius:18px;background:rgb(255 255 255/.04);border:1px solid rgb(255 255 255/.1);padding:.625rem .625rem 1rem;transition:opacity .3s,transform .3s;opacity:.45;transform:scale(.94)}
+.slide.ativo{opacity:1;transform:none}
+.slide video,.slide img{display:block;width:100%;height:auto;border-radius:12px;background:#111}
+.slide video{aspect-ratio:9/16;object-fit:cover}
+.slide figcaption{padding:.75rem .375rem 0;font-size:.875rem;line-height:1.45;color:#D5D9E2}
+.slide .etq{display:inline-block;font-size:.625rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#0A1200;background:rgb(var(--limao));border-radius:999px;padding:.2rem .6rem;margin-bottom:.5rem}
+.slide q{display:block;quotes:"“" "”"}
+.slide b{display:block;margin-top:.5rem;color:#fff}
+.slide small{display:block;font-size:.75rem;color:var(--nevoa);margin-top:.125rem}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
+.seta{width:2.75rem;height:2.75rem;border-radius:50%;border:0;background:rgb(var(--limao));color:#0A1200;font-size:1.125rem;font-weight:900;cursor:pointer}
+.pontos{display:flex;gap:.4rem}
+.pontos i{width:.5rem;height:.5rem;border-radius:50%;background:rgb(255 255 255/.25)}
+.slide img{cursor:zoom-in}
+.zoom{position:fixed;inset:0;z-index:99;background:rgb(0 0 0/.92);display:flex;align-items:center;justify-content:center;padding:1rem;cursor:zoom-out}
+.zoom img{max-width:100%;max-height:100%;border-radius:10px}
+.pontos i.on{background:rgb(var(--limao));width:1.25rem;border-radius:999px}
+.cert{position:relative;margin-top:1.5rem;border-radius:var(--r-card);padding:1.75rem 1.25rem 1.5rem;text-align:center;background:linear-gradient(160deg,#FFF8E8,#F3E3BE);color:#2A1E05;border:6px double #B98A2E;box-shadow:0 0 50px rgb(var(--ambar)/.35)}
+.cert small{display:block;font-size:.625rem;font-weight:800;letter-spacing:.22em;color:#8A6417}
+.cert strong{display:block;margin-top:.5rem;font-family:Georgia,"Times New Roman",serif;font-size:1.75rem;line-height:1.1}
+.cert .linha{margin:1rem auto .4rem;width:70%;border-top:1px solid #B98A2E}
+.cert em{font-style:normal;font-size:.8125rem;color:#5A4410}
+.selo-cert{width:4.5rem;height:4.5rem;margin:1rem auto 0;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#F7D774,#B98A2E 70%);color:#3A2603;font-size:.5625rem;font-weight:900;letter-spacing:.06em;line-height:1.15;box-shadow:0 0 0 4px #F3E3BE,0 0 0 6px #B98A2E}
+.cert-sec .lista{text-align:left}
+
+/* ---------- bônus ---------- */
+.bonus-inicio{margin-top:4rem;padding-top:3rem;--cor:var(--ambar);background:linear-gradient(180deg,rgb(var(--ambar)/.1),transparent 30rem)}
+.bonus{position:relative;isolation:isolate;overflow:hidden;margin-top:.875rem;border-radius:var(--r-item);border:1px solid rgb(var(--ambar)/.14);padding:1.125rem;transition:border-color .9s}
+.bonus::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,rgb(var(--ambar)/.24),rgb(var(--ambar)/.08) 38%,transparent 72%);opacity:0;transform:translateX(-100%);transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity .6s}
+.bonus.visivel{border-color:rgb(var(--ambar)/.42)}
+.bonus.visivel::before{opacity:1;transform:none}
+.bonus .rotulo{display:inline-block;font-size:.6875rem;font-weight:900;letter-spacing:.08em;background:rgb(var(--ambar));color:#1A0F00;border-radius:999px;padding:.25rem .75rem}
+.bonus b{display:block;font-size:1.125rem;line-height:1.25;margin-top:.625rem}
+.bonus p{font-size:.9375rem;line-height:1.5;color:#D5D9E2;margin-top:.375rem}
+.infinito{max-width:66.375rem;margin:2.5rem auto 0;padding:0 .5rem}
+.infinito img{display:block;width:100%;height:auto}
+.bonus.mentoria{padding:1.25rem 1.125rem 1.125rem;border-color:rgb(var(--ambar)/.42)}
+.bonus.mentoria b{font-size:1.375rem}
+.bonus.mentoria p{margin-top:.625rem}
+.bonus.mentoria strong{color:#fff}
+.bonus.mentoria img{display:block;width:100%;height:auto;margin-top:1rem;border-radius:12px;border:1px solid rgb(255 255 255/.1);box-shadow:0 12px 32px rgb(0 0 0/.45)}
+
+/* ---------- lotes ---------- */
+.lote{margin-top:.75rem;border-radius:var(--r-item);border:1px solid rgb(var(--linha)/.1);background:var(--vidro);padding:1rem 1.125rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.lote b{font-size:1rem}
+.lote small{display:block;font-size:.75rem;color:var(--nevoa);margin-top:.15rem}
+.lote .tag{font-size:.625rem;font-weight:900;letter-spacing:.1em;border-radius:999px;padding:.3rem .65rem;background:rgb(var(--linha)/.08);color:var(--nevoa);white-space:nowrap}
+.lote.agora{border-color:rgb(var(--limao)/.6);background:rgb(var(--limao)/.08)}
+.lote.agora .tag{background:rgb(var(--limao));color:#0A1200}
+.lote.oculto b{filter:blur(5px);user-select:none}
+
+/* ---------- garantia, dúvidas, rodapé ---------- */
+.garantia{margin-top:1rem;display:flex;gap:1rem;align-items:center;border-radius:var(--r-card);background:var(--vidro);padding:1.25rem}
+.garantia .dias{flex:0 0 4.25rem;aspect-ratio:1;border-radius:50%;border:2px solid rgb(var(--limao));display:grid;place-items:center;text-align:center;font-weight:900;font-size:1.375rem;line-height:1;color:rgb(var(--limao))}
+.garantia .dias small{display:block;font-size:.5625rem;letter-spacing:.1em}
+.garantia p{font-size:.9375rem;line-height:1.5;color:#D5D9E2;margin-top:.25rem}
+details{margin-top:.625rem;border-radius:var(--r-item);border:1px solid rgb(var(--linha)/.1);background:var(--vidro);padding:1rem 1.125rem}
+summary{list-style:none;cursor:pointer;font-weight:700;font-size:1rem;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:rgb(var(--limao));font-weight:900}
+details[open] summary::after{content:"–"}
+details p{margin-top:.625rem;font-size:.9375rem;line-height:1.55;color:#D5D9E2}
+.aviso{margin-top:3rem;font-size:.75rem;line-height:1.6;color:var(--nevoa)}
+footer{padding:1.5rem 1rem 0;font-size:.6875rem;color:var(--nevoa);text-align:center}
+
+/* ---------- botão fixo ---------- */
+.fixo{position:fixed;left:50%;bottom:calc(.875rem + env(safe-area-inset-bottom));transform:translate(-50%,160%);width:min(28rem,calc(100% - 2rem));z-index:40;transition:transform .35s ease}
+.fixo.on{transform:translate(-50%,0)}
+.fixo .cta{border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,.6),0 0 22px rgb(var(--limao)/.35)}
+.fixo .cta span{border-radius:999px;min-height:3.25rem;font-size:.9375rem}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .neon::after{animation:none;opacity:.6}
+  .cta::before{animation:none}
+  .bonus,.bonus::before,.fixo{transition:none}
+}
+.topo .nota+.cta{margin-top:1.5rem}
+</style>
+</head>
+<body>
+
+<!-- FAIXA DE URGÊNCIA -->
+<div class="faixa">
+  <p>Black Friday · últimos dias do combo</p>
+  <div class="relogio" id="relogio" role="timer" aria-label="Tempo restante da oferta">
+    <div><b data-u="d">00</b><small>DIAS</small></div><i>:</i>
+    <div><b data-u="h">00</b><small>HORAS</small></div><i>:</i>
+    <div><b data-u="m">00</b><small>MIN</small></div><i>:</i>
+    <div><b data-u="s">00</b><small>SEG</small></div>
+  </div>
+</div>
+
+<main>
+<!-- TOPO -->
+<header class="topo" id="topo">
+  <h1>Combo Black Friday<br><span class="neon" data-text="Bar completo">Bar completo</span></h1>
+  <p class="t">O Bar Plan Pro vitalício, que sozinho custa R$ 3.000, mais 12 cursos e apps de drinks, certificado internacional e uma mentoria individual comigo. Pagamento único, para sempre.</p>
+  <p class="nota">R$ 6.693 em cursos e apps, com condição de Black Friday.</p>
+  <a class="cta" href="https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ" target="_blank" rel="noopener" data-comprar><span>Quero entrar no grupo →</span></a>
+  <ul class="selos">
+    <li>Acesso vitalício</li><li>Acesso imediato</li><li>Pagamento único</li><li>Garantia de 7 dias</li>
+  </ul>
+</header>
+
+<!-- COMPARATIVO -->
+<section class="wrap">
+  <p class="eyebrow">Para você ter ideia</p>
+  <h2>Este é o comparativo entre comprar separado e levar o combo.</h2>
+
+  <div class="plano">
+    <h3>Comprando separado</h3>
+    <p class="sub">Cada produto no seu preço normal.</p>
+    <dl>
+      <div class="master-linha"><dt>Bar Plan Pro (vitalício)</dt><dd>R$ 3.000</dd></div>
+      <div><dt>Drinks que Dão Lucro</dt><dd>R$ 340</dd></div>
+      <div><dt>DRINKAI</dt><dd>R$ 340</dd></div>
+      <div><dt>Eventos de Sucesso</dt><dd>R$ 340</dd></div>
+      <div><dt>Alquimia dos Drinks</dt><dd>R$ 297</dd></div>
+      <div><dt>Método Drinks Infinitos</dt><dd>R$ 297</dd></div>
+      <div><dt>DrinkFlix</dt><dd>R$ 297</dd></div>
+      <div><dt>Desvendando o Gin</dt><dd>R$ 297</dd></div>
+      <div><dt>Desafio Bartender Pró</dt><dd>R$ 297</dd></div>
+      <div><dt>De 3 a 5 mil como Bartender</dt><dd>R$ 297</dd></div>
+      <div><dt>Delivery de Drinks</dt><dd>R$ 297</dd></div>
+      <div><dt>Kit Mestre da Precificação</dt><dd>R$ 297</dd></div>
+      <div><dt>Bartender IA Pró</dt><dd>R$ 297</dd></div>
+      <div><dt>Mentoria individual comigo</dt><dd class="nao">Não incluso</dd></div>
+      <div><dt>Certificado internacional</dt><dd class="nao">Não incluso</dd></div>
+      <div><dt>4 e-books do bar</dt><dd class="nao">Não incluso</dd></div>
+      <div><dt>3 módulos extras do app</dt><dd class="nao">Não incluso</dd></div>
+      <div><dt>Kit Fecha Evento</dt><dd class="nao">Não incluso</dd></div>
+    </dl>
+    <div class="total"><span>Total</span><b>R$ 6.693</b></div>
+  </div>
+
+  <div class="plano melhor">
+    <h3>Combo Black Friday</h3>
+    <p class="sub">Acesso vitalício a tudo, em um pagamento.</p>
+    <dl>
+      <div class="master-linha"><dt>Bar Plan Pro (vitalício)</dt><dd>R$ 3.000</dd></div>
+      <div><dt>Drinks que Dão Lucro</dt><dd>R$ 340</dd></div>
+      <div><dt>DRINKAI</dt><dd>R$ 340</dd></div>
+      <div><dt>Eventos de Sucesso</dt><dd>R$ 340</dd></div>
+      <div><dt>Alquimia dos Drinks</dt><dd>R$ 297</dd></div>
+      <div><dt>Método Drinks Infinitos</dt><dd>R$ 297</dd></div>
+      <div><dt>DrinkFlix</dt><dd>R$ 297</dd></div>
+      <div><dt>Desvendando o Gin</dt><dd>R$ 297</dd></div>
+      <div><dt>Desafio Bartender Pró</dt><dd>R$ 297</dd></div>
+      <div><dt>De 3 a 5 mil como Bartender</dt><dd>R$ 297</dd></div>
+      <div><dt>Delivery de Drinks</dt><dd>R$ 297</dd></div>
+      <div><dt>Kit Mestre da Precificação</dt><dd>R$ 297</dd></div>
+      <div><dt>Bartender IA Pró</dt><dd>R$ 297</dd></div>
+      <div><dt>Mentoria individual comigo</dt><dd class="bonus">BÔNUS</dd></div>
+      <div><dt>Certificado internacional</dt><dd class="bonus">BÔNUS</dd></div>
+      <div><dt>4 e-books do bar</dt><dd class="bonus">BÔNUS</dd></div>
+      <div><dt>3 módulos extras do app</dt><dd class="bonus">BÔNUS</dd></div>
+      <div><dt>Kit Fecha Evento</dt><dd class="bonus">BÔNUS</dd></div>
+    </dl>
+    <div class="total"><span>Hoje</span><b>R$ 997</b></div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="wrap" id="oferta">
+  <div class="preco">
+    <p class="eyebrow">Condição exclusiva desta página</p>
+    <p class="de">de <s>R$ 6.693</s></p>
+    <span class="off">85% DE DESCONTO</span>
+    <p class="por"><small>12x de</small>R$ 103,09</p>
+    <p class="vista">ou R$ 997 à vista</p>
+    <a class="cta" href="https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ" target="_blank" rel="noopener" data-comprar data-checkout><span>Quero entrar no grupo →</span></a>
+    <ul class="selos">
+      <li>Acesso imediato</li><li>Pagamento único</li><li>Compra pela Hotmart</li><li>Garantia de 7 dias</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INFINITO: todos os produtos -->
+<div class="infinito">
+  <picture>
+    <source media="(max-width: 640px)" srcset="capas/web/combo-infinito-mob.webp" width="860" height="1001">
+    <img src="capas/web/combo-infinito.webp" width="1600" height="534" loading="lazy" decoding="async" alt="Os produtos do combo atravessados por um símbolo de infinito: Bar Plan Pro, Drinks que Dão Lucro, DRINKAI, Eventos de Sucesso, Alquimia dos Drinks, Método Drinks Infinitos, Desvendando o Gin, Desafio Bartender Pró, De 3 a 5 mil como Bartender e Bartender IA Pro">
+  </picture>
+</div>
+
+<!-- PRODUTOS -->
+<section class="wrap c" style="padding-bottom:0">
+  <p class="eyebrow">O que você leva se entrar agora</p>
+  <h2>Do drink em casa ao evento fechado.</h2>
+</section>
+
+<section class="master" id="bar-plan-pro">
+  <span class="coroa">★ PRODUTO MASTER</span>
+  <h3>Bar Plan Pro</h3>
+  <p class="t">Bar Plan Pro é o app que transforma um pedido de orçamento no WhatsApp em evento entregue e pago. Você digita o evento uma vez (convidados, horas e cardápio) e o app calcula o consumo, monta o pacote com a sua margem e gera a proposta, o contrato e a lista de compras.</p>
+  <p class="t">Chega de abrir a planilha, procurar o último evento parecido e chutar um valor por convidado. É o app que fecha o combo: tudo o que você aprende nos cursos vira preço, contrato e lucro aqui.</p>
+  <div class="capa img larga"><img src="capas/web/bar-plan-pro.jpg" alt="Capa do Bar Plan Pro" width="640" height="427" loading="lazy"></div>
+  <div class="abas" role="tablist" aria-label="O que tem no Bar Plan Pro">
+    <button type="button" role="tab" id="bt-comercial" aria-controls="aba-comercial" aria-selected="true">Comercial</button>
+    <button type="button" role="tab" id="bt-financeiro" aria-controls="aba-financeiro" aria-selected="false">Financeiro</button>
+    <button type="button" role="tab" id="bt-operacional" aria-controls="aba-operacional" aria-selected="false">Operação</button>
+    <button type="button" role="tab" id="bt-admin" aria-controls="aba-admin" aria-selected="false">Contrato</button>
+  </div>
+  <div class="painel" role="tabpanel" id="aba-comercial" aria-labelledby="bt-comercial">
+    <p>O cliente pede o orçamento e recebe proposta com cardápio, valor e condições. Você vê quem ainda não respondeu.</p>
+    <ul class="lista">
+      <li>Cadastro de clientes e CRM</li>
+      <li>Orçamento e proposta profissional</li>
+      <li>Envio pelo WhatsApp</li>
+      <li>Acompanhamento de cada orçamento até o aceite</li>
+      <li>Cardápio pronto para mostrar ao cliente</li>
+    </ul>
+  </div>
+  <div class="painel" role="tabpanel" id="aba-financeiro" aria-labelledby="bt-financeiro" hidden>
+    <p>Você sabe quanto o evento custa, quanto cobrar e quanto sobra antes de dizer o preço.</p>
+    <ul class="lista">
+      <li>Cadastro de insumos com o custo atualizado em todos os drinks</li>
+      <li>Ficha técnica com custo pelos seus preços</li>
+      <li>Consumo calculado por convidados e horas de evento</li>
+      <li>Pacotes com margem e preço</li>
+      <li>Sinal, saldo e PIX</li>
+      <li>Painel financeiro do evento</li>
+    </ul>
+  </div>
+  <div class="painel" role="tabpanel" id="aba-operacional" aria-labelledby="bt-operacional" hidden>
+    <p>No dia do evento, a lista de compras e o checklist já estão prontos. Nada de gelo faltando.</p>
+    <ul class="lista">
+      <li>Lista de compras</li>
+      <li>Estoque</li>
+      <li>Checklist de materiais</li>
+      <li>Quadro (Kanban) com os eventos</li>
+      <li>Datas e organização da equipe</li>
+    </ul>
+  </div>
+  <div class="painel" role="tabpanel" id="aba-admin" aria-labelledby="bt-admin" hidden>
+    <p>Contrato assinado, sinal recebido e o histórico de cada cliente no mesmo lugar.</p>
+    <ul class="lista">
+      <li>Contrato</li>
+      <li>Informações e documentos do evento</li>
+      <li>Histórico de cada cliente e evento</li>
+    </ul>
+  </div></section>
+
+<article class="produto" style="--cor:var(--coral)">
+  <span class="num" aria-hidden="true">1</span>
+  <div class="capa img"><img src="capas/web/drinks-que-dao-lucro.jpg" alt="Capa do Drinks que Dão Lucro" width="640" height="640" loading="lazy"></div>
+  <span class="selo">App · receitas e lucro</span>
+  <h3>Drinks que Dão Lucro</h3>
+  <p class="t">Drinks que Dão Lucro é o app com 119 fichas de preparo que mostram, drink por drink, quanto custa fazer e por quanto vender. Você descobre qual drink do seu cardápio paga a conta e qual só dá trabalho.</p>
+  <ul class="lista">
+    <li>119 fichas de preparo</li>
+    <li>9 aulas</li>
+    <li>Calculadora de custo e preço sugerido</li>
+  </ul>
+</article>
+
+<article class="produto" style="--cor:var(--azul)">
+  <span class="num" aria-hidden="true">2</span>
+  <div class="capa img"><img src="capas/web/drinkai.jpg" alt="Capa do DRINKAI" width="640" height="640" loading="lazy"></div>
+  <span class="selo">App · para fazer em casa</span>
+  <h3>DRINKAI</h3>
+  <p class="t">DRINKAI é o app para quem faz drinks em casa. Você marca o que tem na geladeira e no armário, e ele mostra o que dá para fazer agora, com a dose certa. Vai dar festa? Ele monta a lista de compras e diz quanto vai gastar.</p>
+  <ul class="lista">
+    <li>Cerca de 100 drinks-base com variações</li>
+    <li>Modo festa com lista de compras e custo</li>
+    <li>Passaporte e drink novo toda semana</li>
+  </ul>
+</article>
+
+<article class="produto" style="--cor:var(--ambar)">
+  <span class="num" aria-hidden="true">3</span>
+  <div class="capa img"><img src="capas/web/eventos-de-sucesso.jpg" alt="Capa do Eventos de Sucesso" width="640" height="640" loading="lazy"></div>
+  <span class="selo">Curso · bar de eventos</span>
+  <h3>Eventos de Sucesso</h3>
+  <p class="t">Eventos de Sucesso é o curso para ganhar dinheiro com bar de eventos, com 190 aulas em vídeo. Quando o seu bar é igual aos outros, o cliente escolhe pelo menor preço. Aqui você cria carta, drinks autorais, licores e xaropes próprios, e o cliente passa a escolher você.</p>
+  <p class="t">Mais de 734 alunos já fizeram. Serve para quem está começando e para quem já tem empresa de drinks.</p>
+  <ul class="lista">
+    <li>190 aulas em vídeo</li>
+    <li>Certificado internacional</li>
+    <li>Licores e xaropes artesanais e lista de fornecedores</li>
+  </ul>
+</article>
+
+<!-- DEPOIMENTOS -->
+<section class="wrap c provas" aria-label="Depoimentos">
+  <h2>Mas será que dá resultado?</h2>
+  <p class="sub-provas">Tire suas próprias conclusões:</p>
+  <div class="carrossel" id="carrossel" tabindex="0">
+    <figure class="slide">
+      <video src="provas/depo-gabriel.mp4" poster="provas/depo-gabriel.jpg" controls playsinline preload="none" width="480" height="854"></video>
+      <figcaption><span class="etq">Bar Plan Pro</span><q>Antes era uma missão precificar, dosar cada drink, procurar o custo. As propostas para os clientes, em cinco minutos já estão prontas.</q><b>Gabriel Eterno</b><small>Imperium Líquidos · Goiânia (GO)</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <video src="provas/depo-lucas.mp4" poster="provas/depo-lucas.jpg" controls playsinline preload="none" width="476" height="854"></video>
+      <figcaption><span class="etq">Bar Plan Pro</span><q>A gente tinha dificuldade em controlar os eventos, o financeiro, os insumos e o estoque. O aplicativo tem solucionado 99% dos nossos problemas.</q><b>Lucas</b><small>Tribus Bartenders · norte de Mato Grosso</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/guilherme-7800.webp" width="900" height="595" loading="lazy" alt="Mensagem de Guilherme no grupo: acabou de fechar um evento para 250 convidados na faixa de R$ 7.800">
+      <figcaption><span class="etq">Bar Plan Pro</span><q>Acabei de fechar um evento para 250 convidados na faixa de R$ 7.800,00.</q><b>Guilherme</b><small>aluno do Bar Plan Pro</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/orcamentos-fechados.webp" width="900" height="672" loading="lazy" alt="Conversa em que um aluno conta que em um mês teve 19 orçamentos encaminhados e 6 fechados de primeira">
+      <figcaption><span class="etq">Mentoria</span><q>Em um mês tive bastante procura e 19 orçamentos encaminhados, 6 orçamentos fechados de primeira.</q><small>aluno, depois da mentoria</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/john-plano-pro.webp" width="900" height="539" loading="lazy" alt="Mensagem de John no grupo: no plano Pro o cálculo do evento sai em 10 segundos, com lucro e margem automáticos">
+      <figcaption><span class="etq">Bar Plan Pro</span><q>No plano PRO isso se resolve em 10 segundos, meu amigo. O cálculo é automático, com lucros e margem de lucro.</q><b>John</b><small>respondendo um colega no grupo</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/mentoria-turma.webp" width="900" height="919" loading="lazy" alt="Mensagens de Ederson, Happiness Bartenders e Helbert elogiando as aulas da mentoria">
+      <figcaption><span class="etq">Mentoria</span><q>Minha primeira aula na mentoria hoje, e já deu para mudar 30% do que achava que sabia.</q><b>Helbert</b><small>e mais dois alunos no grupo</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/app-ruan.webp" width="900" height="805" loading="lazy" alt="Mensagens de alunos: o app é fácil e prático, e Ruan conta que a comunidade virou investimento">
+      <figcaption><span class="etq">Bar Plan Pro</span><q>Estou alimentando o app, muito fácil e prático. Parabéns, ficou ótimo.</q><small>e o Ruan sobre a comunidade</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/mayara.webp" width="900" height="405" loading="lazy" alt="Mensagem de Mayara: quanta coisa destravada sobre pacotes e como oferecer o trabalho">
+      <figcaption><span class="etq">Mentoria</span><q>Quanta coisa destravada sobre pacotes e saber qual rumo tomar quanto a como oferecer nosso trabalho.</q><b>Mayara</b></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/leandro.webp" width="900" height="821" loading="lazy" alt="Mensagem de Leandro agradecendo: aprendeu muita coisa na raça e ainda vê muito para aprender">
+      <figcaption><span class="etq">Bar Plan Pro</span><q>Antigamente era muito difícil encontrar alguém que abrisse o leque da profissão. E olha que eu tô há muito tempo no ramo.</q><b>Leandro</b></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/mensagens-alunos.webp" width="800" height="800" loading="lazy" alt="Mensagens de alunos: um conta que trabalha em adega e choperia com drinks próprios, outro que já tem dois balcões, outra que abriu o próprio negócio">
+      <figcaption><span class="etq">Eventos de Sucesso</span><q>Graças ao senhor hoje consigo abrir meu próprio negócio. Comecei do pouco, hoje estou longe.</q><small>Mensagens que os alunos mandaram depois do curso</small></figcaption>
+    </figure>
+    <figure class="slide">
+      <img src="provas/certificados-alunos.webp" width="800" height="800" loading="lazy" alt="Certificados de conclusão postados por alunos e a mensagem de uma aluna que inaugurou o próprio espaço">
+      <figcaption><span class="etq">Certificado</span><q>Nem acredito que a partir de um anúncio de Instagram eu iria criar meu próprio negócio.</q><b>Rayanne Santos</b><small>e os certificados que os alunos postaram</small></figcaption>
+    </figure>
+  </div>
+  <div class="car-nav">
+    <button type="button" class="seta" data-dir="-1" aria-label="Depoimento anterior">←</button>
+    <div class="pontos" aria-hidden="true"></div>
+    <button type="button" class="seta" data-dir="1" aria-label="Próximo depoimento">→</button>
+  </div>
+</section>
+
+<!-- CERTIFICADO -->
+<section class="wrap c cert-sec">
+  <p class="eyebrow">Certificado internacional</p>
+  <h2>Termine o curso com um certificado para mostrar ao cliente.</h2>
+  <div class="cert" role="img" aria-label="Ilustração do certificado internacional do Eventos de Sucesso">
+    <small>CERTIFICADO INTERNACIONAL</small>
+    <strong>Eventos de Sucesso</strong>
+    <div class="linha"></div>
+    <em>Certificado de conclusão · 190 aulas</em>
+    <div class="selo-cert">CERTI-<br>FICADO<br>INTERNA-<br>CIONAL</div>
+  </div>
+  <ul class="lista">
+    <li>Concluiu o Eventos de Sucesso, recebe o certificado internacional</li>
+    <li>Coloque no perfil, no orçamento e na proposta do Bar Plan Pro</li>
+    <li>O cliente que compara dois bares vê quem tem formação</li>
+  </ul>
+</section>
+
+<!-- MAIS CURSOS -->
+<section class="wrap mais c">
+  <p class="eyebrow">E ainda tem mais</p>
+  <h2>Mais 9 cursos para você dominar o balcão.</h2>
+  <div class="grade">
+    <div class="curso"><img src="capas/web/alquimia-dos-drinks-pt.jpg" alt="Capa do Alquimia dos Drinks" width="640" height="640" loading="lazy"><div><b>Alquimia dos Drinks</b><small>Curso</small><p>Caipirinhas gourmet, mojitos, gin tônicas e margaritas com variações, tudo feito com utensílios de cozinha. Inclui aula de xaropes artesanais.</p></div></div>
+    <div class="curso"><img src="capas/web/metodo-drinks-infinitos.jpg" alt="Capa do Método Drinks Infinitos" width="640" height="640" loading="lazy"><div><b>Método Drinks Infinitos</b><small>Curso</small><p>Os drinks que você serve para a família e os amigos com o que já tem em casa, sem comprar equipamento de bar.</p></div></div>
+    <div class="curso"><img src="capas/web/drinkflix.jpg" alt="Capa do DrinkFlix" width="640" height="640" loading="lazy"><div><b>DrinkFlix</b><small>Curso</small><p>Mais de 100 aulas de drinks em formato de streaming, com conteúdo novo toda semana.</p></div></div>
+    <div class="curso"><img src="capas/web/desvendando-o-gin.jpg" alt="Capa do Desvendando o Gin" width="640" height="640" loading="lazy"><div><b>Desvendando o Gin</b><small>Curso</small><p>O passo a passo do gin e das melhores combinações com ele, a bebida que mais aparece nos cardápios de evento.</p></div></div>
+    <div class="curso"><img src="capas/web/desafio-bartender-pro.jpg" alt="Capa do Desafio Bartender Pró" width="640" height="640" loading="lazy"><div><b>Desafio Bartender Pró</b><small>Curso</small><p>30 dias de desafios para sair bartender completo, com bônus da equipe Bartender de Sucesso.</p></div></div>
+    <div class="curso"><img src="capas/web/de-3-a-5-mil.jpg" alt="Capa do De 3 a 5 mil como Bartender" width="640" height="640" loading="lazy"><div><b>De 3 a 5 mil como Bartender</b><small>Curso</small><p>Os materiais básicos e as receitas dos drinks mais vendidos para você começar a trabalhar na área, com 3 bônus.</p></div></div>
+    <div class="curso"><img src="capas/web/delivery-de-drinks.jpg" alt="Capa do Delivery de Drinks" width="640" height="640" loading="lazy"><div><b>Delivery de Drinks</b><small>Curso</small><p>Como abrir uma empresa de drinks por delivery, montar a cartela e calcular o preço com planilhas prontas.</p></div></div>
+    <div class="curso"><img src="capas/web/kit-precificacao.jpg" alt="Capa do Kit Mestre da Precificação" width="640" height="640" loading="lazy"><div><b>Kit Mestre da Precificação</b><small>Planilhas</small><p>Planilhas em Excel que calculam o custo de cada coquetel e o valor do evento com lucro.</p></div></div>
+    <div class="curso"><img src="capas/web/bartender-ia-pro.jpg" alt="Capa do Bartender IA Pró" width="640" height="640" loading="lazy"><div><b>Bartender IA Pró</b><small>IA</small><p>5 robôs de IA: cardápio autoral em segundos, tendências, combos que aumentam o ticket, feedback para a equipe e checklist do evento.</p></div></div>
+  </div>
+</section>
+
+<div class="wrap" style="margin-top:2.5rem">
+  <a class="cta" href="https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ" target="_blank" rel="noopener" data-comprar><span>Quero entrar no grupo →</span></a>
+</div>
+
+<!-- BÔNUS -->
+<section class="wrap bonus-inicio">
+  <p class="eyebrow">Bônus</p>
+  <h2>Calma que ainda tem os bônus.</h2>
+
+  <div class="bonus mentoria"><span class="rotulo">BÔNUS 1</span><b>Mentoria individual comigo</b><p>Curso gravado não responde a sua dúvida. Depois da compra, você tem uma chamada só sua comigo para abrir o seu bar e sair com o próximo passo definido.</p><p><strong>Seu preço:</strong> quanto cobrar no próximo orçamento, com a sua margem. <strong>Sua carta:</strong> os drinks que vendem e têm a cara do seu bar. <strong>Seu evento:</strong> o passo a passo até o próximo evento fechado.</p><p>Sem turma e sem fila de perguntas. A conversa é sobre o seu caso, do primeiro drink ao orçamento aprovado.</p><img src="capas/web/mentoria-individual.jpg" width="1536" height="864" loading="lazy" alt="Lucas Marcon em mentoria individual por videochamada com uma aluna"></div>
+  <div class="bonus"><span class="rotulo">BÔNUS 2</span><b>Certificado internacional</b><p>Ao concluir o Eventos de Sucesso, o certificado é seu para mostrar em cada orçamento.</p></div>
+  <div class="bonus"><span class="rotulo">BÔNUS 3</span><b>Bar Sem Fila</b><p>10 drinks em versão batch e 5 pré-mix dos clássicos. Você prepara na véspera e monta o copo em 15 segundos: o bar não engarrafa na hora da valsa.</p></div>
+  <div class="bonus"><span class="rotulo">BÔNUS 4</span><b>Drink Assinatura</b><p>O método em 4 passos (base, acidez, doçura e aroma) para criar o drink com o nome do casal, 10 fichas autorais para renomear e 8 xaropes premium.</p></div>
+  <div class="bonus"><span class="rotulo">BÔNUS 5</span><b>Mocktails</b><p>12 fichas completas e a carta de mocktails pronta para 15 anos, casamento e festa de dia. A mesa de quem não bebe também passa a ser sua.</p></div>
+  <div class="bonus"><span class="rotulo">BÔNUS 6</span><b>Kit Fecha Evento</b><p>27 mensagens de WhatsApp prontas, em duas trilhas (empresa e freelancer), para responder o cliente que pediu orçamento e sumiu.</p></div>
+  <div class="bonus"><span class="rotulo">BÔNUS 7</span><b>4 e-books do bar</b><p>15 Drinks Tropicais, Gelo, Xaropes e Bases, Xaropes Artesanais e Petiscos e Harmonização, em PDF para consultar no celular.</p></div>
+</section>
+
+<!-- LOTES -->
+<section class="wrap">
+  <p class="eyebrow">Lotes</p>
+  <h2>O preço sobe a cada lote.</h2>
+  <div class="lote agora"><div><b>12x de R$ 103,09</b><small>Lote 1 · preço desta página</small></div><span class="tag">DISPONÍVEL AGORA</span></div>
+  <div class="lote oculto"><div><b>12x de R$ 00,00</b><small>Lote 2</small></div><span class="tag">VALOR OCULTO</span></div>
+  <div class="lote oculto"><div><b>12x de R$ 00,00</b><small>Último lote</small></div><span class="tag">VALOR OCULTO</span></div>
+</section>
+
+<!-- GARANTIA + DÚVIDAS -->
+<section class="wrap">
+  <div class="garantia">
+    <div class="dias"><div>7<small>DIAS</small></div></div>
+    <div><b>Garantia de 7 dias</b><p>Entre, abra os apps, assista às aulas. Se em 7 dias não for para você, peça o reembolso pela Hotmart e recebe tudo de volta.</p></div>
+  </div>
+
+  <h2 style="margin-top:3rem">Dúvidas</h2>
+  <details><summary>Como recebo o acesso?</summary><p>Por e-mail, logo depois que a Hotmart confirma o pagamento. No Pix e no cartão, é na hora.</p></details>
+  <details><summary>Funciona no celular?</summary><p>Sim. Os apps e os cursos abrem direto no navegador do celular.</p></details>
+  <details><summary>Por quanto tempo tenho acesso?</summary><p>Para sempre. O combo é pagamento único e o acesso aos cursos e apps não expira. Sem mensalidade.</p></details>
+  <details><summary>Nunca fiz um drink. Serve para mim?</summary><p>Serve. Comece pelo Alquimia dos Drinks e pelo DRINKAI em casa. Quando quiser trabalhar com isso, o Eventos de Sucesso e o Bar Plan Pro estão no mesmo acesso.</p></details>
+  <details><summary>Já tenho um dos apps. Vale a pena?</summary><p>[RASCUNHO] Definir a condição para quem já é aluno.</p></details>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="wrap c">
+  <h2>O bar inteiro,<br><span class="neon" data-text="em uma compra só.">em uma compra só.</span></h2>
+  <p class="t" style="margin:1rem 0 1.5rem">A condição desta página termina quando o relógio zerar.</p>
+  <a class="cta" href="https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ" target="_blank" rel="noopener" data-comprar><span>Quero entrar no grupo →</span></a>
+  <p class="aviso">O acesso vale para os produtos e bônus listados nesta oferta. Não inclui produtos lançados depois.</p>
+</section>
+</main>
+
+<footer>© [nome da empresa]. Todos os direitos reservados. · <a href="#">Termos de compra</a></footer>
+
+<!-- BOTÃO FIXO: aparece depois do topo e some na oferta -->
+<div class="fixo" id="fixo"><a class="cta" href="https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ" target="_blank" rel="noopener" data-comprar><span>Quero entrar no grupo →</span></a></div>
+
+<script>
+/* ===== AJUSTES ===== */
+var FIM_DA_OFERTA = '2026-11-27T23:59:59-03:00'; // Black Friday 2026
+var LINK_CHECKOUT = '#';                         // link da Hotmart
+
+var LINK_GRUPO = 'https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ'; // grupo do combo (pré-abertura)
+
+// Até a abertura (17/11), todos os botões levam ao grupo do WhatsApp.
+// Na abertura, troque LINK_GRUPO por LINK_CHECKOUT na linha abaixo.
+document.querySelectorAll('[data-comprar]').forEach(function(a){ a.href = LINK_GRUPO; a.target = '_blank'; a.rel = 'noopener'; });
+
+// relógio com prazo real (não reinicia a cada visita)
+(function(){
+  var fim = new Date(FIM_DA_OFERTA).getTime(), el = {};
+  document.querySelectorAll('#relogio [data-u]').forEach(function(b){ el[b.dataset.u] = b; });
+  function p(n){ return String(n).padStart(2,'0'); }
+  function tic(){
+    var s = Math.max(0, Math.floor((fim - Date.now())/1000));
+    el.d.textContent = p(Math.floor(s/86400));
+    el.h.textContent = p(Math.floor(s%86400/3600));
+    el.m.textContent = p(Math.floor(s%3600/60));
+    el.s.textContent = p(s%60);
+  }
+  tic(); setInterval(tic, 1000);
+})();
+
+// botão fixo + entrada dos bônus
+(function(){
+  var fixo = document.getElementById('fixo'), topoFora = false, ofertaVisivel = false;
+  function upd(){ fixo.classList.toggle('on', topoFora && !ofertaVisivel); }
+  if(!('IntersectionObserver' in window)){ fixo.classList.add('on'); document.querySelectorAll('.bonus').forEach(function(b){b.classList.add('visivel')}); return; }
+  new IntersectionObserver(function(e){ topoFora = !e[0].isIntersecting; upd(); }).observe(document.getElementById('topo'));
+  new IntersectionObserver(function(e){ ofertaVisivel = e[0].isIntersecting; upd(); }).observe(document.getElementById('oferta'));
+  var ob = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visivel'); ob.unobserve(e.target); } }); }, {threshold:.35});
+  document.querySelectorAll('.bonus').forEach(function(b){ ob.observe(b); });
+})();
+</script>
+<script>
+(function(){
+  var bts=document.querySelectorAll('.abas [role=tab]');
+  bts.forEach(function(b){ b.addEventListener('click',function(){
+    bts.forEach(function(o){ o.setAttribute('aria-selected','false'); document.getElementById(o.getAttribute('aria-controls')).hidden=true; });
+    b.setAttribute('aria-selected','true'); document.getElementById(b.getAttribute('aria-controls')).hidden=false;
+  }); });
+})();
+</script>
+<script>
+(function(){
+  var c=document.getElementById('carrossel'); if(!c) return;
+  var sl=[].slice.call(c.querySelectorAll('.slide')), pts=c.parentNode.querySelector('.pontos');
+  sl.forEach(function(){pts.appendChild(document.createElement('i'))});
+  var dots=[].slice.call(pts.children), atual=0;
+  function marca(){
+    var m=c.scrollLeft+c.clientWidth/2, best=0, d=1e9;
+    sl.forEach(function(s,i){var x=Math.abs(s.offsetLeft+s.offsetWidth/2-m); if(x<d){d=x;best=i}});
+    if(best!==atual){var v=sl[atual].querySelector('video'); if(v) v.pause();}
+    atual=best;
+    sl.forEach(function(s,i){s.classList.toggle('ativo',i===best); dots[i].classList.toggle('on',i===best)});
+  }
+  function vai(i){i=Math.max(0,Math.min(sl.length-1,i)); var s=sl[i]; c.scrollTo({left:s.offsetLeft-(c.clientWidth-s.offsetWidth)/2,behavior:'smooth'});}
+  c.parentNode.querySelectorAll('.seta').forEach(function(b){b.addEventListener('click',function(){vai(atual+Number(b.dataset.dir))})});
+  var t; c.addEventListener('scroll',function(){clearTimeout(t); t=setTimeout(marca,60)},{passive:true});
+  window.addEventListener('resize',marca); marca();
+  c.addEventListener('click',function(e){ if(e.target.tagName!=='IMG') return; var z=document.createElement('div'); z.className='zoom'; z.setAttribute('role','dialog'); z.innerHTML='<img alt="">'; z.firstChild.src=e.target.currentSrc||e.target.src; z.firstChild.alt=e.target.alt; z.addEventListener('click',function(){z.remove()}); document.addEventListener('keydown',function k(ev){if(ev.key==='Escape'){z.remove();document.removeEventListener('keydown',k)}}); document.body.appendChild(z); });
+})();
+</script>
+</body>
+</html>
