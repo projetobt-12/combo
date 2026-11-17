@@ -113,6 +113,8 @@ p.t{font-size:1.0625rem;line-height:1.75rem;color:#D5D9E2}
 .passos li::before{content:counter(p);flex:none;width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:900;background:rgb(var(--linha)/.1)}
 .passos b{color:rgb(var(--limao))}
 .pixbox .obs{font-size:.8125rem;color:var(--nevoa);text-align:center}
+.zap{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.25rem;border-radius:1rem;background:#25D366;color:#062E16;font-weight:900;font-size:1rem;text-decoration:none;padding:.75rem 1rem;text-align:center}
+.zap:active{transform:scale(.98)}
 .selos{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:1rem;font-size:.8125rem;color:#D5D9E2;text-align:left}
 .selos li{list-style:none;display:flex;gap:.4rem;align-items:center}
 .selos li::before{content:"✓";font-weight:900;color:rgb(var(--limao))}
@@ -659,7 +661,9 @@ footer{padding:1.5rem 1rem 0;font-size:.6875rem;color:var(--nevoa);text-align:ce
         <li><span>Abra o app do seu banco e escolha <b>Pix</b> → pagar com chave (e-mail).</span></li>
         <li><span>Cole a chave <b>contato@exshowbar.com</b> e digite <b>R$ 997,00</b>.</span></li>
         <li><span>Confira se aparece o nome <b>Extreme Show Bar</b> e confirme.</span></li>
+        <li><span>Mande o <b>comprovante no WhatsApp</b> para liberar o seu acesso.</span></li>
       </ol>
+      <a class="zap" id="zap-comprovante" href="https://wa.me/5554992428282" target="_blank" rel="noopener">Enviar comprovante no WhatsApp</a>
       <p class="obs">Se aparecer outro nome, não pague.</p>
     </div>
   </div>
@@ -670,6 +674,7 @@ footer{padding:1.5rem 1rem 0;font-size:.6875rem;color:var(--nevoa);text-align:ce
 /* ===== AJUSTES ===== */
 var FIM_DA_OFERTA = '2026-11-27T23:59:59-03:00'; // Black Friday 2026
 var CHAVE_PIX   = 'contato@exshowbar.com'; // Pix por chave e-mail (R$ 997), recebedor: Extreme Show Bar
+var ZAP_COMPROVANTE = '5554992428282'; // WhatsApp que recebe o comprovante do Pix
 var LINK_CARTAO = 'https://link.infinitepay.io/exshowbar/VC1D-WgOs1S6jmJ-997,00';   // link de pagamento no cartão (12x de R$ 102,90)
 
 var LINK_GRUPO = 'https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ'; // grupo do combo (pré-abertura)
@@ -690,6 +695,7 @@ document.querySelectorAll('[data-link=cartao]').forEach(function(a){ a.href = LI
     x.querySelector('.fechar').addEventListener('click', fecha);
   });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') fecha(); });
+  document.getElementById('zap-comprovante').href = 'https://wa.me/' + ZAP_COMPROVANTE + '?text=' + encodeURIComponent('Olá! Paguei o Combo de Sucesso no Pix (R$ 997,00). Segue o comprovante.');
   var bt = document.getElementById('copiar-pix');
   function ok(){ bt.textContent = 'Copiado ✓'; setTimeout(function(){ bt.textContent = 'Copiar'; }, 2500); }
   bt.addEventListener('click', function(){
