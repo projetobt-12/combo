@@ -63,9 +63,14 @@ p.t{font-size:1.0625rem;line-height:1.75rem;color:#D5D9E2}
 .topo{padding:2rem 1rem 0;text-align:center;background:radial-gradient(ellipse 90% 60% at 50% 0,rgb(var(--limao)/.13),transparent 70%)}
 .topo p.t{margin-top:1rem}
 .topo .nota{margin-top:.75rem;font-size:.8125rem;font-weight:600;color:rgb(var(--limao))}
-.video{margin:1.5rem 0 1.25rem;aspect-ratio:9/16;max-height:32rem;width:100%;border-radius:var(--r-card);border:1px solid rgb(var(--linha)/.12);background:linear-gradient(160deg,#1B1F29,#0B0C10);display:grid;place-items:center;position:relative;overflow:hidden}
-.video span{font-size:.8125rem;color:var(--nevoa);padding:0 2rem}
-.video::before{content:"▶";position:absolute;width:4rem;height:4rem;border-radius:50%;display:grid;place-items:center;background:rgb(var(--limao));color:#0A1200;font-size:1.25rem;padding-left:.2rem;box-shadow:0 0 30px rgb(var(--limao)/.5);top:38%}
+.video{margin:1.5rem auto 1.25rem;width:min(100%,22rem);aspect-ratio:9/16;border-radius:var(--r-card);border:1px solid rgb(var(--linha)/.12);background:#0B0C10;position:relative;overflow:hidden;box-shadow:0 20px 60px rgb(0 0 0/.5)}
+.video video{display:block;width:100%;height:100%;object-fit:cover}
+.video .play{position:absolute;inset:0;display:grid;place-items:center;border:0;background:linear-gradient(180deg,transparent 55%,rgb(0 0 0/.55));cursor:pointer;color:#fff;font:inherit}
+.video .play i{width:4.5rem;height:4.5rem;border-radius:50%;display:grid;place-items:center;background:rgb(var(--limao));color:#0A1200;font-style:normal;font-size:1.5rem;padding-left:.25rem;box-shadow:0 0 30px rgb(var(--limao)/.6);animation:pulsa 1.6s ease-in-out infinite}
+.video .play b{position:absolute;bottom:1.25rem;left:0;right:0;font-size:.875rem;font-weight:800;letter-spacing:.02em}
+.video.tocando .play{display:none}
+@keyframes pulsa{50%{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.video .play i{animation:none}}
 
 /* ---------- botão com filete girando ---------- */
 .cta{position:relative;isolation:isolate;overflow:hidden;display:block;padding:2px;border-radius:calc(.875rem + 2px);background:rgb(var(--limao)/.3);box-shadow:0 0 24px rgb(var(--limao)/.3)}
@@ -256,6 +261,10 @@ footer{padding:1.5rem 1rem 0;font-size:.6875rem;color:var(--nevoa);text-align:ce
 <header class="topo" id="topo">
   <h1>Combo Black Friday<br><span class="neon" data-text="Bar completo">Bar completo</span></h1>
   <p class="t">O Bar Plan Pro vitalício, que sozinho custa R$ 3.000, mais 12 cursos e apps de drinks, certificado internacional e uma mentoria individual comigo. Pagamento único, para sempre.</p>
+  <div class="video" id="vsl">
+    <video src="vsl/vsl-combo.mp4" poster="vsl/vsl-combo-capa.jpg" playsinline preload="metadata" width="720" height="1280"></video>
+    <button type="button" class="play" aria-label="Assistir ao vídeo do Combo de Sucesso com som"><i>▶</i><b>Assista com som (2 min)</b></button>
+  </div>
   <p class="nota">R$ 6.693 em cursos e apps, com condição de Black Friday.</p>
   <a class="cta" href="https://chat.whatsapp.com/KXLdM0aFLYhG0ArsZTwrbJ" target="_blank" rel="noopener" data-comprar><span>Quero entrar no grupo →</span></a>
   <ul class="selos">
@@ -634,6 +643,18 @@ document.querySelectorAll('[data-comprar]').forEach(function(a){ a.href = LINK_G
     bts.forEach(function(o){ o.setAttribute('aria-selected','false'); document.getElementById(o.getAttribute('aria-controls')).hidden=true; });
     b.setAttribute('aria-selected','true'); document.getElementById(b.getAttribute('aria-controls')).hidden=false;
   }); });
+})();
+</script>
+<script>
+(function(){
+  var w=document.getElementById('vsl'); if(!w) return;
+  var v=w.querySelector('video');
+  w.querySelector('.play').addEventListener('click',function(){
+    w.classList.add('tocando'); v.controls=true; v.muted=false;
+    var p=v.play(); if(p&&p.catch) p.catch(function(){ w.classList.remove('tocando'); });
+    document.querySelectorAll('.slide video').forEach(function(o){o.pause()});
+  });
+  v.addEventListener('ended',function(){ var a=document.querySelector('.topo .cta'); if(a) a.scrollIntoView({behavior:'smooth',block:'center'}); });
 })();
 </script>
 <script>
